@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     nginx supervisor \
     git unzip libzip-dev \
     && docker-php-ext-install pcntl pdo_mysql zip \
+    && rm -f /etc/nginx/sites-enabled/default \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer-bin /usr/bin/composer /usr/bin/composer
